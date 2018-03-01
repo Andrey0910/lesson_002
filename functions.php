@@ -1,7 +1,17 @@
 <?php
-function task1()
+function task1($arr, $bool = false)
 {
-    // TODO:
+    if ($bool) {
+        $str = "";
+        foreach ($arr as $item) {
+            $str .= $item . " ";
+        }
+        return $str;
+    } else {
+        foreach ($arr as $item) {
+            echo "<p>", $item, "</p>";
+        }
+    }
 }
 
 function task2()
