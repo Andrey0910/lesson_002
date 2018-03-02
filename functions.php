@@ -14,9 +14,35 @@ function task1($arr, $bool = false)
     }
 }
 
-function task2()
+function task2($arrNum, $action)
 {
-    // TODO:
+    $actionArr = ["+", "-", "*", "/"];
+    if (!in_array($action, $actionArr)){
+        echo "Арифметическое действие не определено.";
+        return null;
+    }
+    $res = 1;
+    foreach ($arrNum as $item) {
+        if (!is_numeric($item)){
+            echo "Массив содержит не число.";
+            return null;
+        }
+        switch ($action) {
+            case "+":
+                $res += $item;
+                break;
+            case "-":
+                $res -= $item;
+                break;
+            case "*":
+                $res *= $item;
+                break;
+            case "/":
+                $res /= $item;
+                break;
+        }
+    }
+    return $res;
 }
 
 function task3()
