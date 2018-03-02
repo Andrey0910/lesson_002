@@ -47,7 +47,80 @@ function task2($arrNum, $action)
 
 function task3()
 {
-    // TODO:
+    $actionArr = ["+", "-", "*", "/"];
+    $data = func_get_args();
+    $action = null;
+    $result = 0;
+    $numArr = null;
+    foreach ($data as $key => $item){
+        if(is_array($item)){
+            if(count($item) > 0){
+                $numArr = $item;
+            }
+            else{
+                unset($data[$key]);
+            }
+        }
+        elseif (in_array($item, $actionArr)){
+            $action = $item;
+            unset($data[$key]);
+        }
+    }
+    if(empty($action)){
+        echo "Арифметическое действие не определено.";
+        return null;
+    }
+    else{
+        if(!empty($numArr) && count($numArr) > 0){
+            foreach ($numArr as $item){
+                if (!is_numeric($item)) {
+                    echo "Массив содержит не число.";
+                    return null;
+                }
+                switch ($action) {
+                    case "+":
+                        ($result == 0) ? $result = $item : $result += $item;
+                        break;
+                    case "-":
+                        ($result == 0) ? $result = $item : $result -= $item;
+                        break;
+                    case "*":
+                        ($result == 0) ? $result = $item : $result *= $item;
+                        break;
+                    case "/":
+                        ($result == 0) ? $result = $item : $result /= $item;
+                        break;
+                }
+            }
+            return $result;
+        }
+        else {
+            foreach ($data as $key => $item) {
+                if (!is_numeric($item)) {
+                    echo "Массив содержит не число.";
+                    return null;
+                }
+                if (!empty($item)) {
+
+                    switch ($action) {
+                        case "+":
+                            ($result == 0) ? $result = $item : $result += $item;
+                            break;
+                        case "-":
+                            ($result == 0) ? $result = $item : $result -= $item;
+                            break;
+                        case "*":
+                            ($result == 0) ? $result = $item : $result *= $item;
+                            break;
+                        case "/":
+                            ($result == 0) ? $result = $item : $result /= $item;
+                            break;
+                    }
+                }
+            }
+            return $result;
+        }
+    }
 }
 
 function task4()

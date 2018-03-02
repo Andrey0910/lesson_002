@@ -33,6 +33,7 @@ echo "<p>", task2($data, "-"), "</p>";
 echo "<p>", task2($data, "*"), "</p>";
 $data = [16, 8, 2, 1];
 echo "<p>", task2($data, "/"), "</p>";
+echo "<p>", task2($data, "k"), "</p>";
 echo "</div>";
 // конец вывода второго задания
 /**
