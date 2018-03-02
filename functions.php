@@ -17,13 +17,13 @@ function task1($arr, $bool = false)
 function task2($arrNum, $action)
 {
     $actionArr = ["+", "-", "*", "/"];
-    if (!in_array($action, $actionArr)){
+    if (!in_array($action, $actionArr)) {
         echo "Арифметическое действие не определено.";
         return null;
     }
     $res = 1;
     foreach ($arrNum as $item) {
-        if (!is_numeric($item)){
+        if (!is_numeric($item)) {
             echo "Массив содержит не число.";
             return null;
         }
@@ -52,27 +52,24 @@ function task3()
     $action = null;
     $result = 0;
     $numArr = null;
-    foreach ($data as $key => $item){
-        if(is_array($item)){
-            if(count($item) > 0){
+    foreach ($data as $key => $item) {
+        if (is_array($item)) {
+            if (count($item) > 0) {
                 $numArr = $item;
-            }
-            else{
+            } else {
                 unset($data[$key]);
             }
-        }
-        elseif (in_array($item, $actionArr)){
+        } elseif (in_array($item, $actionArr)) {
             $action = $item;
             unset($data[$key]);
         }
     }
-    if(empty($action)){
+    if (empty($action)) {
         echo "Арифметическое действие не определено.";
         return null;
-    }
-    else{
-        if(!empty($numArr) && count($numArr) > 0){
-            foreach ($numArr as $item){
+    } else {
+        if (!empty($numArr) && count($numArr) > 0) {
+            foreach ($numArr as $item) {
                 if (!is_numeric($item)) {
                     echo "Массив содержит не число.";
                     return null;
@@ -93,8 +90,7 @@ function task3()
                 }
             }
             return $result;
-        }
-        else {
+        } else {
             foreach ($data as $key => $item) {
                 if (!is_numeric($item)) {
                     echo "Массив содержит не число.";
@@ -123,9 +119,34 @@ function task3()
     }
 }
 
-function task4()
+function task4($sizeRows, $sizeColumns)
 {
-    // TODO:
+    if (!is_int($sizeRows) || $sizeRows < 0) {
+        echo "Колличество строк в таблице заданно не верно.";
+        return null;
+    }
+    if (!is_int($sizeColumns) || $sizeColumns < 0) {
+        echo "Колличество столбцов в таблице заданно не верно.";
+        return null;
+    }
+    if ($sizeRows != $sizeColumns) {
+        echo "Колличество строк и столбцов в таблице должно быть одинаковое.";
+        return null;
+    }
+    for ($i=1; $i <= $sizeRows; $sizeRows--) {
+        echo "<table>";
+        for ($row = 1; $row <= $sizeRows; $row++) {
+            echo "<tr>";
+            for ($col = 1; $col <= $sizeColumns; $col++) {
+                $num = $row * $col;
+                echo "<td>", $num, "<td>";
+            }
+            echo "</tr>";
+        }
+        echo "</table>";
+        echo "<br>";
+        $sizeColumns--;
+    }
 }
 
 function task5()

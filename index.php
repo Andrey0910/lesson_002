@@ -36,9 +36,7 @@ echo "<p>", task2($data, "/"), "</p>";
 echo "<p>", task2($data, "k"), "</p>";
 echo "</div>";
 // конец вывода второго задания
-/**
- * Task 3
- */
+// начало вывода третьего задания
 echo "<div class='jumbotron'>";
 $data = [];
 echo "<p>", task3("+", 1, 2, 3, 4, 5), "</p>";
@@ -47,6 +45,13 @@ echo "<p>", task3($data, "*", 1, 2, 3, 4, 5), "</p>";
 $data = [16, 8, 2, 1];
 echo "<p>", task3($data, "/"), "</p>";
 echo "</div>";
+// конец вывода второго задания
+// начало вывода третьего задания
+echo "<div class='jumbotron'>";
+echo task4(8, 8);
+//echo "<p>", task4(7, 8), "</p>";
+echo "</div>";
+// конец вывода третьего задания
 // ...
 $content = ob_get_contents();
 ob_end_clean();
