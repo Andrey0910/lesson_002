@@ -133,7 +133,7 @@ function task4($sizeRows, $sizeColumns)
         echo "Колличество строк и столбцов в таблице должно быть одинаковое.";
         return null;
     }
-    for ($i=1; $i <= $sizeRows; $sizeRows--) {
+    for ($i = 1; $i <= $sizeRows; $sizeRows--, $sizeColumns--) {
         echo "<table>";
         for ($row = 1; $row <= $sizeRows; $row++) {
             echo "<tr>";
@@ -145,13 +145,26 @@ function task4($sizeRows, $sizeColumns)
         }
         echo "</table>";
         echo "<br>";
-        $sizeColumns--;
     }
 }
 
-function task5()
+function isPalindrome($str)
 {
-    // TODO:
+    $str = str_replace(' ', '', $str);
+    $str = mb_strtolower($str);
+    for ($start = 0, $end = mb_strlen($str) - 1; $start < $end; $start++, $end--) {
+        if (mb_substr($str, $start, 1) == mb_substr($str, $end, 1)) {
+            return true;
+        }
+        else{
+            return false;
+        }
+    }
+}
+
+function task5($str)
+{
+    echo $str, " - ", (isPalindrome($str)) ? "Палиндромом!" : "Не палиндромом.";
 }
 
 function task6()
