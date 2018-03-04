@@ -173,9 +173,10 @@ function task6()
     return $date;
 }
 
-function task7()
+function task7($strDate)
 {
-    // TODO:
+    $date = strtotime($strDate);
+    return $date;
 }
 
 function task8()

@@ -61,6 +61,11 @@ echo "<div class='jumbotron'>";
 echo "<p>", task6(), "</p>";
 echo "</div>";
 // конец вывода шестого задания
+// начало вывода седьмого задания
+echo "<div class='jumbotron'>";
+echo "<p>", task7("24.02.2016 00:00:00"), "</p>";
+echo "</div>";
+// конец вывода седьмого задания
 // ...
 $content = ob_get_contents();
 ob_end_clean();
