@@ -56,6 +56,11 @@ echo "<div class='jumbotron'>";
 echo "<p>", task5("А роза упала на лапу Азора"), "</p>";
 echo "</div>";
 // конец вывода пятого задания
+// начало вывода шестого задания
+echo "<div class='jumbotron'>";
+echo "<p>", task6(), "</p>";
+echo "</div>";
+// конец вывода шестого задания
 // ...
 $content = ob_get_contents();
 ob_end_clean();
