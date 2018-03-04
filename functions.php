@@ -169,7 +169,8 @@ function task5($str)
 
 function task6()
 {
-    // TODO:
+    $date = date("d.m.Y H:i");
+    return $date;
 }
 
 function task7()
