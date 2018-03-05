@@ -39,7 +39,7 @@ function task2($arrNum, $action)
                 empty($res) ? $res = $item : $res *= $item;
                 break;
             case "/":
-                if (!empty($res) && $item == 0){
+                if (!empty($res) && $item == 0) {
                     echo "На ноль делить нельзя.";
                     return null;
                 }
@@ -67,8 +67,7 @@ function task3()
         } elseif (in_array($item, $actionArr)) {
             $action = $item;
             unset($data[$key]);
-        }
-        else{
+        } else {
             empty($numArr) ? $numArr[0] = $item : array_push($numArr, $item);
         }
     }
@@ -78,31 +77,33 @@ function task3()
 
 function task4($sizeRows, $sizeColumns)
 {
-    if (!is_int($sizeRows) || $sizeRows < 0) {
+    if (!is_int($sizeRows)) {
         echo "Колличество строк в таблице заданно не верно.";
         return null;
     }
-    if (!is_int($sizeColumns) || $sizeColumns < 0) {
+    if (!is_int($sizeColumns)) {
         echo "Колличество столбцов в таблице заданно не верно.";
+        return null;
+    }
+    if ($sizeRows == 0 && $sizeColumns == 0) {
         return null;
     }
     if ($sizeRows != $sizeColumns) {
         echo "Колличество строк и столбцов в таблице должно быть одинаковое.";
         return null;
     }
-    for ($i = 1; $i <= $sizeRows; $sizeRows--, $sizeColumns--) {
-        echo "<table>";
-        for ($row = 1; $row <= $sizeRows; $row++) {
-            echo "<tr>";
-            for ($col = 1; $col <= $sizeColumns; $col++) {
-                $num = $row * $col;
-                echo "<td>", $num, "<td>";
-            }
-            echo "</tr>";
+    echo "<table>";
+    for ($row = 1; $row <= $sizeRows; $row++) {
+        echo "<tr>";
+        for ($col = 1; $col <= $sizeColumns; $col++) {
+            $num = $row * $col;
+            echo "<td>", $num, "<td>";
         }
-        echo "</table>";
-        echo "<br>";
+        echo "</tr>";
     }
+    echo "</table>";
+    echo "<br>";
+    task4($sizeRows - 1, $sizeColumns - 1);
 }
 
 function isPalindrome($str)
