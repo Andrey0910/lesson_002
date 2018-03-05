@@ -18,11 +18,11 @@ function task1($arr, $bool = false)
 function task2($arrNum, $action)
 {
     $actionArr = ["+", "-", "*", "/"];
-    if (!in_array($action, $actionArr)) {
+    if (!in_array($action, $actionArr) || empty($action)) {
         echo "Арифметическое действие не определено.";
         return null;
     }
-    $res = 1;
+    $res = null;
     foreach ($arrNum as $item) {
         if (!is_numeric($item)) {
             echo "Массив содержит не число.";
@@ -36,10 +36,14 @@ function task2($arrNum, $action)
                 $res -= $item;
                 break;
             case "*":
-                $res *= $item;
+                empty($res) ? $res = $item : $res *= $item;
                 break;
             case "/":
-                $res /= $item;
+                if (!empty($res) && $item == 0){
+                    echo "На ноль делить нельзя.";
+                    return null;
+                }
+                empty($res) ? $res = $item : $res /= $item;
                 break;
         }
     }
@@ -51,12 +55,12 @@ function task3()
     $actionArr = ["+", "-", "*", "/"];
     $data = func_get_args();
     $action = null;
-    $result = 0;
+    $result = null;
     $numArr = null;
     foreach ($data as $key => $item) {
         if (is_array($item)) {
             if (count($item) > 0) {
-                $numArr = $item;
+                empty($numArr) ? $numArr = $item : array_merge($numArr, $item);
             } else {
                 unset($data[$key]);
             }
@@ -64,60 +68,12 @@ function task3()
             $action = $item;
             unset($data[$key]);
         }
-    }
-    if (empty($action)) {
-        echo "Арифметическое действие не определено.";
-        return null;
-    } else {
-        if (!empty($numArr) && count($numArr) > 0) {
-            foreach ($numArr as $item) {
-                if (!is_numeric($item)) {
-                    echo "Массив содержит не число.";
-                    return null;
-                }
-                switch ($action) {
-                    case "+":
-                        ($result == 0) ? $result = $item : $result += $item;
-                        break;
-                    case "-":
-                        ($result == 0) ? $result = $item : $result -= $item;
-                        break;
-                    case "*":
-                        ($result == 0) ? $result = $item : $result *= $item;
-                        break;
-                    case "/":
-                        ($result == 0) ? $result = $item : $result /= $item;
-                        break;
-                }
-            }
-            return $result;
-        } else {
-            foreach ($data as $key => $item) {
-                if (!is_numeric($item)) {
-                    echo "Массив содержит не число.";
-                    return null;
-                }
-                if (!empty($item)) {
-
-                    switch ($action) {
-                        case "+":
-                            ($result == 0) ? $result = $item : $result += $item;
-                            break;
-                        case "-":
-                            ($result == 0) ? $result = $item : $result -= $item;
-                            break;
-                        case "*":
-                            ($result == 0) ? $result = $item : $result *= $item;
-                            break;
-                        case "/":
-                            ($result == 0) ? $result = $item : $result /= $item;
-                            break;
-                    }
-                }
-            }
-            return $result;
+        else{
+            empty($numArr) ? $numArr[0] = $item : array_push($numArr, $item);
         }
     }
+    $result = task2($numArr, $action);
+    return $result;
 }
 
 function task4($sizeRows, $sizeColumns)
@@ -156,8 +112,7 @@ function isPalindrome($str)
     for ($start = 0, $end = mb_strlen($str) - 1; $start < $end; $start++, $end--) {
         if (mb_substr($str, $start, 1) == mb_substr($str, $end, 1)) {
             return true;
-        }
-        else{
+        } else {
             return false;
         }
     }
