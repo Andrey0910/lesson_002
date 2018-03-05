@@ -6,12 +6,13 @@ function task1($arr, $bool = false)
         foreach ($arr as $item) {
             $str .= $item . " ";
         }
-        return $str;
+        echo "<p>", $str, "</p>";
     } else {
         foreach ($arr as $item) {
             echo "<p>", $item, "</p>";
         }
     }
+    return null;
 }
 
 function task2($arrNum, $action)
