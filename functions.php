@@ -87,9 +87,9 @@ function isPalindrome($str)
 {
     $str = str_replace(' ', '', $str);
     $str = mb_strtolower($str);
-    $str2 = $str;
-    for ($start = 0, $end = mb_strlen($str) - 1; $start < mb_strlen($str); $start++, $end--) {
-        if (mb_substr($str, $start, 1) != mb_substr($str2, $end, 1)) {
+    $strLength = mb_strlen($str);
+    for ($start = 0, $end = $strLength - 1; $start < $strLength; $start++, $end--) {
+        if (mb_substr($str, $start, 1) != mb_substr($str, $end, 1)) {
             return false;
         }
     }
