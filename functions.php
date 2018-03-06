@@ -1,18 +1,12 @@
 <?php
 function task1($arr, $bool = false)
 {
-    if ($bool) {
-        $str = "";
-        foreach ($arr as $item) {
-            $str .= $item . " ";
-        }
-        echo "<p>", $str, "</p>";
-    } else {
-        foreach ($arr as $item) {
-            echo "<p>", $item, "</p>";
-        }
+    foreach ($arr as $item) {
+        echo "<p>", $item, "</p>";
     }
-    return null;
+    if ($bool) {
+        return implode(" ", $arr);
+    }
 }
 
 function task2($arrNum, $action)
@@ -52,27 +46,10 @@ function task2($arrNum, $action)
 
 function task3()
 {
-    $actionArr = ["+", "-", "*", "/"];
-    $data = func_get_args();
-    $action = null;
-    $result = null;
-    $numArr = null;
-    foreach ($data as $key => $item) {
-        if (is_array($item)) {
-            if (count($item) > 0) {
-                empty($numArr) ? $numArr = $item : array_merge($numArr, $item);
-            } else {
-                unset($data[$key]);
-            }
-        } elseif (in_array($item, $actionArr)) {
-            $action = $item;
-            unset($data[$key]);
-        } else {
-            empty($numArr) ? $numArr[0] = $item : array_push($numArr, $item);
-        }
-    }
-    $result = task2($numArr, $action);
-    return $result;
+    $args = func_get_args();
+    $operation = $args[0];
+    unset($args[0]);
+    return task2($args, $operation);
 }
 
 function task4($sizeRows, $sizeColumns)
@@ -110,18 +87,18 @@ function isPalindrome($str)
 {
     $str = str_replace(' ', '', $str);
     $str = mb_strtolower($str);
-    for ($start = 0, $end = mb_strlen($str) - 1; $start < $end; $start++, $end--) {
-        if (mb_substr($str, $start, 1) == mb_substr($str, $end, 1)) {
-            return true;
-        } else {
+    $str2 = $str;
+    for ($start = 0, $end = mb_strlen($str) - 1; $start < mb_strlen($str); $start++, $end--) {
+        if (mb_substr($str, $start, 1) != mb_substr($str2, $end, 1)) {
             return false;
         }
     }
+    return true;
 }
 
 function task5($str)
 {
-    echo $str, " - ", (isPalindrome($str)) ? "Палиндромом!" : "Не палиндромом.";
+    echo $str, " - ", (isPalindrome($str)) ? "Палиндром!" : "Не палиндром.";
 }
 
 function task6()
