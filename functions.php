@@ -121,5 +121,7 @@ function task8($fileName)
 
 function task9()
 {
-    // TODO:
+    $file = "anothertest.txt";
+    $str = "Hello again!";
+    file_put_contents($file, $str);
 }
