@@ -113,9 +113,10 @@ function task7($strDate)
     return $date;
 }
 
-function task8()
+function task8($fileName)
 {
-    // TODO:
+    $str = file_get_contents($fileName);
+    echo $str;
 }
 
 function task9()
