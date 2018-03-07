@@ -119,9 +119,7 @@ function task8($fileName)
     echo $str;
 }
 
-function task9()
+function task9($file, $str)
 {
-    $file = "anothertest.txt";
-    $str = "Hello again!";
     file_put_contents($file, $str);
 }

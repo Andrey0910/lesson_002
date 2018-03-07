@@ -86,7 +86,7 @@ echo "</div>";
 // начало вывода девятого задания
 echo "<div class='jumbotron'>";
 echo "<h5>", "Задание 9", "</h5>";
-echo "<p>", task9(), "</p>";
+echo "<p>", task9("anothertest.txt", "Hello again!"), "</p>";
 echo "</div>";
 // конец вывода девятого задания
 // ...
